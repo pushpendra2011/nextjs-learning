@@ -1,20 +1,15 @@
+import {Fragment} from 'react';
 import MeetupCard from '../components/meetupItem'
 import {MongoClient} from 'mongodb'
-const MEET_INFO = [
-    {id:"1",
-    title:"meet up 1",
-    url:"https://images.trvl-media.com/hotels/1000000/850000/848900/848864/bd3cade4.jpg",
-    details:"lorem ipsum"
-    },
-    {id:"2",
-    title:"meet up 2",
-    url:"https://images.trvl-media.com/hotels/1000000/850000/848900/848864/bd3cade4.jpg",
-    details:"lorem ipsum 2"
-    }
-]
-
+import Head from 'next/head'
 function HomePage(props) {
-return <MeetupCard meetupInfo={props.meetups}></MeetupCard>
+return <Fragment>
+    <Head>
+        <title>Meetups page</title>
+        <meta name="description" content="Browse a huge list..."></meta>
+    </Head>
+    <MeetupCard meetupInfo={props.meetups}></MeetupCard>
+</Fragment>
 }
 export async function getStaticProps() {
     const client = await MongoClient.connect('mongodb+srv://pushpendray2011:mypassword@cluster0.wy8gq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
